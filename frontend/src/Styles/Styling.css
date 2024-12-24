@@ -7,6 +7,13 @@ html, body {
   height: 100%; /* Ensure html and body take up full height */
 }
 
+.note {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #ffe9e9;
+}
+
 .santa-letter-container input,
 .santa-letter-container textarea {
   all: unset; /* Resets all inherited or default styles */
@@ -55,20 +62,16 @@ html, body {
   }
   
   .santa-letter-container {
-    background-color: green;
+    background-color: #ff5c33; /* Warm, festive background */
     color: white;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-    position: relative;
-    visibility: visible;
-    overflow: scroll;
-    padding: 200px;
+    padding: 20px;
   }
-  
   
   /* Styling for the heading */
   .santa-heading {
@@ -92,37 +95,40 @@ html, body {
 
   @media (max-width: 768px) {
     .santa-title {
-      top: 10px;
-      display: block;
-      color: #fff;
-      margin: 30px 10px;
-      margin-top: 300px;
-      padding: 40px;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      color: white;
     }
   }
   
   @media (min-width: 769px) {
     .santa-title {
-      top: 10px;
-      left: 10px;
-      display: block;
-      color: #fff;
-      margin: 30px 30px;
-      margin-top: 300px;
-      padding: 30px;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      color: white;
     }
   }
   
-  
-  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
   
   h1 {
     text-align: center;
     color: #f1eaea;
   }
   
+
   .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 400px; /* Keep form inputs centered and compact */
   }
   
   label {

@@ -107,6 +107,9 @@ const WriteLetter: React.FC = () => {
             )}
           </div>
         ))}
+        <p className='note'>
+          Now just click a button below to send your letter!
+        </p>
         <button type="submit">Submit</button>
       </form>
 

@@ -382,4 +382,49 @@ button:hover {
 }
 
 
+/* SantaCatcher */
+
+/* General container styles */
+.santa-catcher-container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #87ceeb, #ffffff);
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+}
+
+/* Title styles */
+.santa-catcher-title {
+  text-align: center;
+  font-family: "Mountains of Christmas", serif;
+  color: #ff5555;
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Description styles */
+.santa-catcher-description {
+  text-align: center;
+  margin: 20px;
+  max-width: 600px;
+  font-size: 1.2rem;
+  color: #333;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Score styles */
+.santa-catcher-score {
+  text-align: center;
+  margin-top: 20px;
+  font-family: "Arial", sans-serif;
+  font-size: 1.5rem;
+  color: #006400;
+}
+
   

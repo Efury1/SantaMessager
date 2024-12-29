@@ -31,6 +31,8 @@ const initialFormData: FormData = {
   email: '',
 };
 
+export const HoHoHoSound = require('../Assets/HoHoHoSound.mp3'); // Update path based on your project structure
+
 const WriteLetter: React.FC = () => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [emailSent, setEmailSent] = useState<boolean | null>(null);
@@ -74,9 +76,14 @@ const WriteLetter: React.FC = () => {
     }
   };
 
+  const playSound = () => { 
+    const audio = new Audio(HoHoHoSound);
+    audio.play();
+  }
+
   return (
     <div className="santa-letter-container-1">
-      <img src={SantaImage} alt="Santa holding gifts" className="santa-top-right-image" />
+      <img src={SantaImage} alt="Santa holding gifts" className="santa-top-right-image"  onMouseEnter={playSound}/>
       <h1 className="santa-title">Write Your Letter to Santa</h1>
       <p className="note">* Please make sure to get approval from your parents before submitting your letter to Santa.</p>
       <form onSubmit={handleSubmit}>

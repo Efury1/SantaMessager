@@ -4,6 +4,7 @@ import { FaGift } from 'react-icons/fa';
 import './Styles/Styling.css';
 import { useNavigate } from 'react-router-dom';
 import CuteSanta from './CuteSanta.jpg';
+import { Snowfall } from 'react-snowfall';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const App: React.FC = () => {
 
   return (
     <div className="santa-container">
+      <Snowfall snowflakeCount={100} color="white" />
       <h1 className="dear-santa">Dear Santa...</h1>
       <img src={CuteSanta} alt="Santa Clause" className="santa-image" />
       <div className="countdown">

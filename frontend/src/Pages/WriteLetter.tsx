@@ -74,7 +74,7 @@ const WriteLetter: React.FC = () => {
   };
 
   return (
-    <div className="santa-letter-container">
+    <div className="santa-letter-container-1">
       <h1 className="santa-title">Write Your Letter to Santa</h1>
       <p className="note">* Please make sure to get approval from your parents before submitting your letter to Santa.</p>
       <form onSubmit={handleSubmit}>

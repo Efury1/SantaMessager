@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../Styles/Styling.css'; // Ensure styles are implemented here
+import SantaImage from '../Assets/Gemini_Generated_Image_mmnr8qmmnr8qmmnr.jpg'; // Update path based on your project structure
 
 interface FormData {
   firstName: string;
@@ -75,6 +76,7 @@ const WriteLetter: React.FC = () => {
 
   return (
     <div className="santa-letter-container-1">
+      <img src={SantaImage} alt="Santa holding gifts" className="santa-top-right-image" />
       <h1 className="santa-title">Write Your Letter to Santa</h1>
       <p className="note">* Please make sure to get approval from your parents before submitting your letter to Santa.</p>
       <form onSubmit={handleSubmit}>
@@ -107,7 +109,7 @@ const WriteLetter: React.FC = () => {
             )}
           </div>
         ))}
-        <p className='note'>
+        <p className="note">
           Now just click a button below to send your letter!
         </p>
         <button type="submit">Submit</button>

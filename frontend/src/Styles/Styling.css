@@ -8,10 +8,11 @@ html, body {
 }
 
 .note {
-  font-size: 0.9rem;
   text-align: center;
-  margin-bottom: 1.5rem;
-  color: #ffe9e9;
+  font-size: 0.9rem;
+  color: #000000;
+  margin-bottom: 20px;
+  z-index: 1;
 }
 
 .santa-letter-container input,
@@ -19,7 +20,19 @@ html, body {
   all: unset; /* Resets all inherited or default styles */
 }
 
-.santa-letter-container input.festive-input,
+button:hover {
+  background-color: #cc0000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.email-status {
+  margin-top: 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #333;
+}
+
+.santa-letnter-container input.festive-input,
 .santa-letter-container textarea.festive-input {
   width: 100%;
   padding: 12px;
@@ -33,6 +46,7 @@ html, body {
   box-sizing: border-box;
   outline: none;
   margin-bottom: 15px;
+  z-index: 1;
 }
 
 /* Styling for the main container */
@@ -118,21 +132,23 @@ html, body {
 
   @media (max-width: 768px) {
     .santa-title {
+      position: relative; /* Ensures the title is layered above other positioned elements */
+      z-index: 1; /* Places the title above the image */
       font-size: 2.5rem;
-      margin-bottom: 2rem;
-      text-align: center;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-      color: white;
+      color: #fd0101;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      margin-bottom: 20px;
     }
   }
   
   @media (min-width: 769px) {
     .santa-title {
+      position: relative; /* Ensures the title is layered above other positioned elements */
+      z-index: 1; /* Places the title above the image */
       font-size: 2.5rem;
-      margin-bottom: 2rem;
-      text-align: center;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-      color: white;
+      color: #fd0101;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      margin-bottom: 20px;
     }
   }
   
@@ -140,6 +156,7 @@ html, body {
     display: block;
     margin-bottom: 0.5rem;
     font-size: 1rem;
+    z-index: 1;
   }
   
   h1 {
@@ -148,17 +165,25 @@ html, body {
   }
   
 
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1;
+  }
+  
   .form-group {
-    margin-bottom: 1rem;
-    width: 100%;
-    max-width: 400px; /* Keep form inputs centered and compact */
+    display: flex;
+    flex-direction: column;
   }
   
   label {
-    display: block;
-    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #ff3333;
     font-weight: bold;
+    margin-bottom: 5px;
   }
+  
   
   input[type="text"],
   input[type="number"],
@@ -245,4 +270,116 @@ html, body {
     border-radius: 5px;
     cursor: pointer;
   }
+
+  /* Reset margin and padding for the body and html */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ensure html and body take up full height */
+}
+
+/* Note text */
+.note {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Input and textarea festive styles */
+.santa-letter-container-1 input.festive-input,
+.santa-letter-container-1 textarea.festive-input {
+  width: 100%;
+  padding: 12px;
+  border: 3px dashed transparent;
+  background: linear-gradient(white, rgb(251, 253, 250)) padding-box,
+              linear-gradient( 45deg, red, white, red, white, red, white, red) border-box;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  color: rgb(30, 28, 28);
+  box-sizing: border-box;
+  outline: none;
+  margin-bottom: 15px;
+}
+
+/* Main letter container */
+.santa-letter-container-1 {
+  background-color: #ffffff; /* Warm, festive background */
+  color: rgb(255, 255, 255);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  padding: 80px;
+  border: 20px solid transparent; /* Create space for the checkered border */
+  border-image: repeating-linear-gradient(
+    45deg,          /* Diagonal stripes */
+    red,            /* Start with red */
+    red 10px,       /* Red stripe thickness */
+    white 10px,     /* Start white after 10px */
+    white 20px      /* White stripe thickness */
+  );
+  border-image-slice: 1; /* Ensure the gradient fills the entire border */
+}
+
+/* Santa title */
+.santa-title {
+  font-size: 2.5rem;
+  color: #fd0101;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px;
+}
+
+/* Form labels */
+label {
+  font-size: 1rem;
+  color: rgb(22, 22, 22);
+  margin-bottom: 5px;
+}
+
+/* Form groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+/* Submit button */
+button {
+  background: #d32f2f;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #b71c1c;
+}
+
+/* Email status message */
+.email-status {
+  margin-top: 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: rgb(1, 1, 1);
+}
+
+.santa-top-right-image {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  padding: 40px; 
+}
+
+
   

@@ -40,6 +40,10 @@ const App: React.FC = () => {
     navigate('/write-letter');
   }
 
+  function handleSantaCatcher(): void {
+    navigate('/santa-catcher');
+  }
+
   return (
     <div className="santa-container">
       <Snowfall snowflakeCount={100} color="white" />
@@ -65,6 +69,19 @@ const App: React.FC = () => {
         style={{ backgroundColor: 'red', color: 'white' }}
         onClick={handleButtonClick}
       />
+
+
+        <Button
+        label={
+          <>
+            <FaGift /> Play Santa Catcher
+          </>
+        }
+        ariaLabel="Play Santa Catcher"
+        style={{ backgroundColor: 'red', color: 'white' }}
+        onClick={handleSantaCatcher}
+      />
+      
     </div>
   );
 };

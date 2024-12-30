@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import CuteSanta from './CuteSanta.jpg';
 import { Snowfall } from 'react-snowfall';
 
+
 const App: React.FC = () => {
   const navigate = useNavigate();
   const [timeRemaining, setTimeRemaining] = useState({

@@ -5,6 +5,7 @@ import App from './App';
 import WriteLetter from './Pages/WriteLetter';
 import SantaCatcher from './Pages/SantaCatcher';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(

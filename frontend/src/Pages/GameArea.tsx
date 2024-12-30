@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../Styles/Styling.css'; // Import the CSS file
+import SantaLeftImg from '../Assets/SantaLeft.jpg';
 import SantaImg from '../Assets/Santa.jpg'; // Import Santa image asset
 import BasketImg from '../Assets/Basket.jpg'; // Import Basket image asset
 
@@ -10,6 +11,7 @@ interface GameAreaProps {
 
 const GameArea: React.FC<GameAreaProps> = ({ score, setScore }) => {
   const [santaLeft, setSantaLeft] = useState(150);
+  const [santaDirection, setSantaDirection] = useState<'left' | 'right'>('right');
   const [baskets, setBaskets] = useState([{ top: 0, left: Math.random() * 350 }]);
   const [gameOver, setGameOver] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
@@ -17,8 +19,10 @@ const GameArea: React.FC<GameAreaProps> = ({ score, setScore }) => {
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'ArrowRight') {
       setSantaLeft((prev) => Math.min(prev + 20, 300));
+      setSantaDirection('right');
     } else if (e.key === 'ArrowLeft') {
       setSantaLeft((prev) => Math.max(prev - 20, 0));
+      setSantaDirection('left');
     }
   };
 
@@ -115,7 +119,7 @@ const GameArea: React.FC<GameAreaProps> = ({ score, setScore }) => {
       {gameStarted && !gameOver && (
         <img
           className="sprite"
-          src={SantaImg}
+          src={santaDirection === 'right' ? SantaImg : SantaLeftImg}
           style={{ left: santaLeft, bottom: 20 }}
           alt="Santa"
         />

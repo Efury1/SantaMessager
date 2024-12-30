@@ -9,23 +9,19 @@ frontend:
         - yarn install
     build:
       commands:
+        # Build the frontend
         - cd frontend
         - yarn build
+        # Start the backend (only for testing, not for production hosting)
         - cd ../backend
         - npm install
         - node server.js
   artifacts:
-    baseDirectory: build
+    baseDirectory: frontend/build
     files:
       - '**/*'
   cache:
     paths:
-      - node_modules/**/*
-      - dist/**/*
-
-# Backend configuration might be added here as a custom build command or separate process
-# backend:
-#   commands:
-#     # Change to the backend directory and start the server
-#     - cd backend
-#     - node server.js
+      - frontend/node_modules/**/*
+      - frontend/dist/**/*
+      - backend/node_modules/**/*

@@ -16,8 +16,7 @@ frontend:
     files:
       - '**/*'
   cache:
-    paths:
-      - node_modules/**/*
+    paths: []
 
 # Backend configuration might be added here as a custom build command or separate process
 backend:

@@ -11,10 +11,34 @@ interface GameAreaProps {
 
 const GameArea: React.FC<GameAreaProps> = ({ score, setScore }) => {
   const [santaLeft, setSantaLeft] = useState(150);
-  const [santaDirection, setSantaDirection] = useState<'left' | 'right'>('right');
+  const [santaDirection, setSantaDirection] = useState<'left' | 'right' | 'up'>('right');
   const [baskets, setBaskets] = useState([{ top: 0, left: Math.random() * 350 }]);
   const [gameOver, setGameOver] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
+  const [santaTop, setSantaTop] = useState(0);
+  const [isJumping, setIsJumping] = useState(false);
+  
+  const moveDown = () => {
+  }
+
+
+  const triggerJump = () => {
+    setIsJumping(true);
+    const jumpHeight = 100; // How high Santa should jump
+    const jumpSpeed = 5; // How fast Santa should jump
+
+    // Move Santa up
+    const upInterval = setInterval(() => {
+       setSantaTop((prev) => {
+        if (prev <= 300 - jumpHeight) {
+          clearInterval(upInterval); // Stop moving up
+          moveDown(); // Move Santa down
+          return prev;
+        }
+        return prev - 5; 
+       });
+    }, jumpSpeed);
+  };
 
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'ArrowRight') {
@@ -23,6 +47,8 @@ const GameArea: React.FC<GameAreaProps> = ({ score, setScore }) => {
     } else if (e.key === 'ArrowLeft') {
       setSantaLeft((prev) => Math.max(prev - 20, 0));
       setSantaDirection('left');
+    } else if (e.key === 'ArrowUp' && !isJumping) {
+      triggerJump();
     }
   };
 

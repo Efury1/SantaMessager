@@ -15,30 +15,6 @@ const GameArea: React.FC<GameAreaProps> = ({ score, setScore }) => {
   const [baskets, setBaskets] = useState([{ top: 0, left: Math.random() * 350 }]);
   const [gameOver, setGameOver] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
-  const [santaTop, setSantaTop] = useState(0);
-  const [isJumping, setIsJumping] = useState(false);
-  
-  const moveDown = () => {
-  }
-
-
-  const triggerJump = () => {
-    setIsJumping(true);
-    const jumpHeight = 100; // How high Santa should jump
-    const jumpSpeed = 5; // How fast Santa should jump
-
-    // Move Santa up
-    const upInterval = setInterval(() => {
-       setSantaTop((prev) => {
-        if (prev <= 300 - jumpHeight) {
-          clearInterval(upInterval); // Stop moving up
-          moveDown(); // Move Santa down
-          return prev;
-        }
-        return prev - 5; 
-       });
-    }, jumpSpeed);
-  };
 
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'ArrowRight') {
@@ -47,12 +23,10 @@ const GameArea: React.FC<GameAreaProps> = ({ score, setScore }) => {
     } else if (e.key === 'ArrowLeft') {
       setSantaLeft((prev) => Math.max(prev - 20, 0));
       setSantaDirection('left');
-    } else if (e.key === 'ArrowUp' && !isJumping) {
-      triggerJump();
-    }
+    } 
   };
 
-  const checkCollision = (basket: { top: number; left: number }) => {
+  const checkCollision = React.useCallback((basket: { top: number; left: number }) => {
     const spriteSize = 100;
     const santaX = santaLeft;
     const basketX = basket.left;
@@ -65,26 +39,26 @@ const GameArea: React.FC<GameAreaProps> = ({ score, setScore }) => {
       santaBottomY < basketY + spriteSize &&
       santaBottomY + spriteSize > basketY
     );
-  };
+  }, [santaLeft]);
 
-  const resetGame = () => {
+  /*const resetGame = () => {
     setScore(0);
     setBaskets([{ top: 0, left: Math.random() * 350 }]);
     setSantaLeft(150);
     setGameOver(false);
     setGameStarted(false);
-  };
+  };*/
 
-  const updateBaskets = () => {
+  const updateBaskets = React.useCallback(() => {
     setBaskets((prevBaskets) =>
       prevBaskets.map((basket) => {
         if (basket.top > 400) {
           setGameOver(true);
           return { top: 0, left: Math.random() * 350 };
         }
-
+  
         const newPosition = { ...basket, top: basket.top + 5 };
-
+  
         if (checkCollision(basket)) {
           setScore((prevScore) => {
             const newScore = prevScore + 1;
@@ -98,19 +72,19 @@ const GameArea: React.FC<GameAreaProps> = ({ score, setScore }) => {
           });
           return { top: 0, left: Math.random() * 350 };
         }
-
+  
         return newPosition;
       })
     );
-  };
-
+  }, [checkCollision, setScore, setGameOver, setBaskets]);
+  
   useEffect(() => {
     if (gameOver || !gameStarted) return;
-
+  
     const interval = setInterval(updateBaskets, 50);
-
+  
     return () => clearInterval(interval);
-  }, [baskets, gameOver, gameStarted]);
+  }, [gameOver, gameStarted, updateBaskets]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);

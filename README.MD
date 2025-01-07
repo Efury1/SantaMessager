@@ -1,5 +1,7 @@
 # 🎅 **SantaMail** 🎄  
 
+Author: Eliza Fury
+
 ---
 
 ## **Welcome to SantaMail!**  
